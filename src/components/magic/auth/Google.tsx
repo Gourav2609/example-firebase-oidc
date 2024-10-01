@@ -54,6 +54,8 @@ const Google = ({ token, setToken }: LoginProps) => {
         throw new Error('Google sign in failed');
       }
 
+      console.log("result: ",result);
+
       // Retrieve ID token from google sign in result
       const accessToken = await result.user.getIdToken();
 
@@ -63,6 +65,8 @@ const Google = ({ token, setToken }: LoginProps) => {
         // this providerId is provided by Magic
         providerId: process.env.NEXT_PUBLIC_PROVIDER_ID ?? '',
       });
+
+      console.log("DID: ",DID);
 
       const metadata = await magic?.user.getMetadata()
 
